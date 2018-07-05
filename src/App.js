@@ -8,7 +8,7 @@ export default class App extends React.Component {
                 lat: 50.7934612,
                 lng: -1.1098803
             },
-            zoom: 12,
+            zoom: 14,
             mapTypeId: "roadmap"
         });
 
@@ -23,9 +23,21 @@ export default class App extends React.Component {
         });
     }
 
+    sidebarVisibility() {
+        let elementClass =
+            this.state.sidebar === "sidenav" ? "sidenav-active" : "sidenav";
+        this.setState({ sidebar: elementClass });
+    }
+
     render() {
         return (
             <div id="app">
+                <header>
+                    <span onClick={this.sidebarVisibility.bind(this)}>
+                        &#9776;
+                    </span>
+                    <h1>Portsmouth POIs</h1>
+                </header>
                 <div id="map" />
             </div>
         );

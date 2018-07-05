@@ -13,3 +13,38 @@ body {
     padding: 0;
     font-family: "Lato", "Arial", sans-serif;
 }
+
+header {
+    height: 70px;
+    background-color: #000;
+    color: white;
+}
+
+header h1 {
+    margin-left: 40%;
+}
+
+.header-active,
+#map-active {
+    margin-left: 250px;
+    transition: margin-left 0.5s;
+}
+
+span,
+h1 {
+    display: inline;
+    line-height: 70px;
+    font-size: 1.8em;
+}
+
+span {
+    margin-right: 50px;
+    margin-left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+span:hover {
+    cursor: pointer;
+}
