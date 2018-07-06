@@ -11,7 +11,8 @@ export default class App extends React.Component {
                 location: {
                     lat: 50.79557519999999,
                     lng: -1.1085171
-                }
+                },
+                id: 'A'
             },
             {
                 title: "HMS Warrior 1860",
@@ -19,62 +20,72 @@ export default class App extends React.Component {
                     lat: 50.7982384,
                     lng: -1.1092475
                 }
+                ,
+                id: 'B'
             },
             {
                 title: "Round Tower",
                 location: {
                     lat: 50.7905406,
                     lng: -1.1088802
-                }
+                },
+                id: 'C'
             },
             {
                 title: "Mary Rose Museum",
                 location: {
                     lat: 50.8022114,
                     lng: -1.1088526
-                }
+                },
+                id: 'D'
             },
             {
                 title: "Action Stations",
                 location: {
                     lat: 50.79991680000001,
                     lng: -1.1070106
-                }
+                },
+                id: 'E'
             },
             {
                 title: "Charles Dickens Birthplace Museum",
                 location: {
                     lat: 50.8070676,
                     lng: -1.0872127
-                }
+                },
+                id: 'F'
             },
             {
                 title: "The D-Day Story",
                 location: {
                     lat: 50.77964100000001,
                     lng: -1.089412
-                }
+                },
+                id: 'G'
             },
             {
                 title: "Southsea Castle",
                 location: {
                     lat: 50.777995,
                     lng: -1.0888283
-                }
+                },
+                id: 'H'
             },
             {
                 title: "Royal Marines Museum",
                 location: {
                     lat: 50.78429,
                     lng: -1.053795
-                }
+                },
+                id: 'I'
             },
             {
                 title: "The Royal Navy Submarine Museum",
                 location: {
                     lat: 50.7881692,
                     lng: -1.1195995
-                }
+                },
+                id: 'J'
             }
         ],
         placesList: []
@@ -112,6 +123,7 @@ export default class App extends React.Component {
     };
 
     render() {
+        let mapClass = this.state.sidebar === "sidenav" ? "map" : "map-active"
         return (
             <div id="app">
                 <header>
@@ -125,7 +137,7 @@ export default class App extends React.Component {
                     close={this.closeNav}
                     locations={this.state.locations}
                 />
-                <div id="map" />
+                <div id="map" className={mapClass}/>
             </div>
         );
     }
