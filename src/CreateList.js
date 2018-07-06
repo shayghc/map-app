@@ -8,7 +8,7 @@ class CreateList extends React.Component {
         firstPass: true
     }
 
-    // Sets the initial sate for the locations
+    // Sets the initial state for the locations
     componentDidMount() {
         this.setState({places: this.props.locations})
     }
@@ -55,7 +55,11 @@ class CreateList extends React.Component {
                     onChange={this.updateFilter.bind(this)}
                 />
                 {this.state.places.map((location) => {
-                    return <Location location={location} id={location.id} key={location.title}/>
+                    return <Location
+                        location={location}
+                        id={location.id}
+                        key={location.title}
+                    />
                 })}
             </div>
         )
