@@ -76,7 +76,8 @@ export default class App extends React.Component {
                     lng: -1.1195995
                 }
             }
-        ]
+        ],
+        placesList: []
     }
 
     componentDidMount() {
@@ -98,6 +99,12 @@ export default class App extends React.Component {
                 });
             }, 1000);
         });
+
+        this.buildPlacesList();
+    }
+
+    buildPlacesList() {
+        console.log('Hello')
     }
 
     sidebarVisibility() {
@@ -122,6 +129,7 @@ export default class App extends React.Component {
                 <SideNav
                     className={this.state.sidebar}
                     close={this.closeNav}
+                    locations={this.state.locations}
                 />
                 <div id="map" />
             </div>
