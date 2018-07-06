@@ -3,7 +3,12 @@ import Location from './Location'
 
 class CreateList extends React.Component {
     state = {
-        filter: ''
+        filter: '',
+        places: []
+    }
+
+    componentDidMount() {
+        this.setState({places: this.props.locations})
     }
 
     updateFilter(event) {
