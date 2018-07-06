@@ -99,12 +99,6 @@ export default class App extends React.Component {
                 });
             }, 1000);
         });
-
-        this.buildPlacesList();
-    }
-
-    buildPlacesList() {
-        console.log('Hello')
     }
 
     sidebarVisibility() {
