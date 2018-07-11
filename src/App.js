@@ -118,14 +118,13 @@ export default class App extends React.Component {
         this.generateMarkers(map, this.state.locations)
     }
 
+    // Generate markers
     generateMarkers(map, locations) {
         const markersList = [];
         let largeInfoWindow = new window.google.maps.InfoWindow();
         let bounds = new window.google.maps.LatLngBounds();
         const labels = "ABCDEFGHIJ";
-
-        // Generate markers
-
+        // Clear current markers ready to generate new markers
         this.deleteMarkers()
 
         for (let i = 0; i < locations.length; i++) {
@@ -156,6 +155,7 @@ export default class App extends React.Component {
             //this.setMarkersList(markersList);
             map.fitBounds(bounds);
         }
+        // Pass the generated marker list ready to update state
         this.setMarkersList(markersList);
 
         // This function populates the infowindow when a marker is clicked
@@ -174,6 +174,7 @@ export default class App extends React.Component {
         }
     }
 
+    // Remove redundant markers form the map before generating new markers
     deleteMarkers() {
         let markers = this.state.markers
         // Clear map on each marker
@@ -186,21 +187,26 @@ export default class App extends React.Component {
         this.setState({markers: markers})
     }
 
+    // Once the list of markers have been generated, update state
     setMarkersList(markersList) {
         this.setState({ markers: markersList });
     }
 
+    // Fetch the filtered list from CreateList.js
     fetchFilteredPOIs(filteredPOIs) {
         this.setState({places: filteredPOIs})
+        // Pass the filtered POIs to generate new markers
         this.generateMarkers(this.state.map, this.state.places);
     }
 
+    // This class determines if the sidenav is visible or collapsed
     sidebarVisibility() {
         let elementClass =
             this.state.sidebar === "sidenav" ? "sidenav-active" : "sidenav";
         this.setState({ sidebar: elementClass });
     }
 
+    // Close the sidenav
     closeNav = () => {
         this.setState({ sidebar: "sidenav" });
     };
