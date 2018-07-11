@@ -15,6 +15,7 @@ class SideNav extends React.Component {
                     <span><li className="closebtn" onClick={this.props.close}>&times;</li></span>
                     <CreateList
                         locations={this.props.locations}
+                        fetchFilteredPOIs={this.props.fetchFilteredPOIs}
                      />
                 </ul>
             </nav>

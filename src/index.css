@@ -8,7 +8,6 @@
 
 .map {
     margin-top: 70px;
-    z-index: -1;
 }
 
 html,
@@ -26,19 +25,18 @@ header {
     position: fixed;
     left: 0px;
     top: 0px;
-    width: 100%
+    width: 100%;
+    z-index: 1;
 }
 
 header h1 {
     margin-left: 40%;
 }
 
-.header-active,
 .map-active {
     margin-top: 70px;
     margin-left: 220px;
     transition: margin-left 0.5s;
-    z-index: -1;
 }
 
 span,
