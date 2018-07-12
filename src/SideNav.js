@@ -16,6 +16,7 @@ class SideNav extends React.Component {
                     <CreateList
                         locations={this.props.locations}
                         fetchFilteredPOIs={this.props.fetchFilteredPOIs}
+                        markerClick={this.props.markerClick}
                      />
                 </ul>
             </nav>

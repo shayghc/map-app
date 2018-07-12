@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import SideNav from './SideNav'
+import ReactTestUtils from 'react-dom/test-utils'
 
 export default class App extends React.Component {
     state = {
@@ -211,10 +212,12 @@ export default class App extends React.Component {
         this.setState({ sidebar: "sidenav" });
     };
 
-    // Provision marker-click for the sidenav items
-    markerClick(itemTitle) {
-        //let target = this.state.markers.filter(marker.title === itemTitle)
-        console.log('Title = ', itemTitle)
+    // Pass the sidenav item click event to the corresponding marker
+    markerClick(title) {
+        const targetMarker = this.state.markers.filter(marker => marker.title === title)
+        // Neither click simulation method works here ---- WHY NOT?
+        ReactTestUtils.Simulate.click(targetMarker)
+        //targetMarker.dispatchEvent(new Event('click'))
     }
 
     render() {
@@ -232,6 +235,7 @@ export default class App extends React.Component {
                     close={this.closeNav}
                     locations={this.state.locations}
                     fetchFilteredPOIs={this.fetchFilteredPOIs.bind(this)}
+                    markerClick={this.markerClick.bind(this)}
                 />
                 <div id="map" className={mapClass}/>
             </div>
