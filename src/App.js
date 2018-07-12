@@ -15,7 +15,8 @@ export default class App extends React.Component {
                     lat: 50.79557519999999,
                     lng: -1.1085171
                 },
-                id: 'A'
+                id: 'A',
+                info: '4b6447c7f964a5200ea82ae3'
             },
             {
                 title: "HMS Warrior 1860",
@@ -24,7 +25,8 @@ export default class App extends React.Component {
                     lng: -1.1092475
                 }
                 ,
-                id: 'B'
+                id: 'B',
+                info: '4b7ac339f964a520753b2fe3'
             },
             {
                 title: "Round Tower",
@@ -32,7 +34,8 @@ export default class App extends React.Component {
                     lat: 50.7905406,
                     lng: -1.1088802
                 },
-                id: 'C'
+                id: 'C',
+                info: '4b7be22bf964a52009722fe3'
             },
             {
                 title: "Portsmouth Historic Dockyard",
@@ -40,7 +43,8 @@ export default class App extends React.Component {
                     lat: 50.800531,
                     lng: -1.1094659
                 },
-                id: 'D'
+                id: 'D',
+                info: '4b7aa0ebf964a52060342fe3'
             },
             {
                 title: "Action Stations",
@@ -48,7 +52,8 @@ export default class App extends React.Component {
                     lat: 50.79991680000001,
                     lng: -1.1070106
                 },
-                id: 'E'
+                id: 'E',
+                info: '4b7ab545f964a52065382fe3'
             },
             {
                 title: "Portsmouth Anglican Cathedral",
@@ -56,7 +61,8 @@ export default class App extends React.Component {
                     lat: 50.7904478,
                     lng: -1.1042945
                 },
-                id: 'F'
+                id: 'F',
+                info: '4b7972f6f964a52004fa2ee3'
             },
             {
                 title: "The D-Day Story",
@@ -64,7 +70,8 @@ export default class App extends React.Component {
                     lat: 50.77964100000001,
                     lng: -1.089412
                 },
-                id: 'G'
+                id: 'G',
+                info: '4c446544f05e95210f0fe4b3'
             },
             {
                 title: "Southsea Castle",
@@ -72,7 +79,8 @@ export default class App extends React.Component {
                     lat: 50.777995,
                     lng: -1.0888283
                 },
-                id: 'H'
+                id: 'H',
+                info: '4b797814f964a520fdfa2ee3'
             },
             {
                 title: "Explosion! Museum of Naval Firepower",
@@ -80,7 +88,8 @@ export default class App extends React.Component {
                     lat: 50.807553,
                     lng: -1.126353
                 },
-                id: 'I'
+                id: 'I',
+                info: '4bd7fef8dc4b9521cd307888'
             },
             {
                 title: "The Royal Navy Submarine Museum",
@@ -88,7 +97,8 @@ export default class App extends React.Component {
                     lat: 50.7881692,
                     lng: -1.1195995
                 },
-                id: 'J'
+                id: 'J',
+                info: '4d8b69e77d4c5481e75f7d71'
             }
         ],
         places: [],
@@ -122,7 +132,8 @@ export default class App extends React.Component {
         this.generateMarkers(map, this.state.locations)
 
         // Get infowindow content!!!!!!!!!!!!!!!!!!!!!!!!!
-        fetch('https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=WO4IYUFMH0UFRBBAUDK0C04TVCOBC4N454Z1PR3VYECSMBXN&v=20180712')
+        let url = 'https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=WO4IYUFMH0UFRBBAUDK0C04TVCOBC4N454Z1PR3VYECSMBXN&v=20180712'
+        fetch(url)
         .then(response => response.json())
         .then(data => this.setState({data}))
         .catch(error => ('Unable to retrieve data, network error!'))
@@ -165,9 +176,9 @@ export default class App extends React.Component {
             //this.setMarkersList(markersList);
             map.fitBounds(bounds);
         }
+
         // Pass the generated marker list ready to update state
         this.setMarkersList(markersList);
-
         // This function populates the infowindow when a marker is clicked
         function populateInfoWindow(marker, infowindow) {
             // Ensure that the infowindow is not already open on this marker
@@ -233,7 +244,6 @@ export default class App extends React.Component {
 
     render() {
         let mapClass = this.state.sidebar === "sidenav" ? "map" : "map-active"
-        console.log('Data = ', this.state.data)
         return (
             <div id="app">
                 <header>
