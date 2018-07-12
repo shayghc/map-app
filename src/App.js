@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 import SideNav from './SideNav'
 import ReactTestUtils from 'react-dom/test-utils'
-import swal from 'sweetalert'
+//import swal from 'sweetalert'
 
 
 export default class App extends React.Component {
@@ -125,7 +125,7 @@ export default class App extends React.Component {
         fetch('https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=WO4IYUFMH0UFRBBAUDK0C04TVCOBC4N454Z1PR3VYECSMBXN&v=20180712')
         .then(response => response.json())
         .then(data => this.setState({data}))
-        .catch(error => ('Unable to retieve data, network error!', error))
+        .catch(error => ('Unable to retrieve data, network error!'))
     }
 
     // Generate markers
@@ -175,6 +175,7 @@ export default class App extends React.Component {
                 infowindow.marker = marker;
                 // InfoWindow content is specified here
                 infowindow.setContent("<div>" + marker.title + "</div>");
+                //infowindow.setContent(data.response.venue.name)
                 infowindow.open(map, marker);
                 // Clear marker property if window is closed
                 infowindow.addListener("closeclick", function() {
