@@ -5,6 +5,7 @@ class Location extends React.Component {
     handleClick = () => {
         let title = this.props.title
         this.props.markerClick(title)
+        console.log('SideNav item clicked')
     }
 
     render() {

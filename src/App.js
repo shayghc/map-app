@@ -215,6 +215,7 @@ export default class App extends React.Component {
     // Pass the sidenav item click event to the corresponding marker
     markerClick(title) {
         const targetMarker = this.state.markers.filter(marker => marker.title === title)
+        console.log(targetMarker)
         // Neither click simulation method works here ---- WHY NOT?
         ReactTestUtils.Simulate.click(targetMarker)
         //targetMarker.dispatchEvent(new Event('click'))
