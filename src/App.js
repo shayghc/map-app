@@ -211,6 +211,12 @@ export default class App extends React.Component {
         this.setState({ sidebar: "sidenav" });
     };
 
+    // Provision marker-click for the sidenav items
+    markerClick(itemTitle) {
+        //let target = this.state.markers.filter(marker.title === itemTitle)
+        console.log('Title = ', itemTitle)
+    }
+
     render() {
         let mapClass = this.state.sidebar === "sidenav" ? "map" : "map-active"
         return (
