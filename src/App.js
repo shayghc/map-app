@@ -2,6 +2,8 @@ import React from "react";
 import "./index.css";
 import SideNav from './SideNav'
 import ReactTestUtils from 'react-dom/test-utils'
+import swal from 'sweetalert'
+
 
 export default class App extends React.Component {
     state = {
@@ -91,7 +93,8 @@ export default class App extends React.Component {
         ],
         places: [],
         markers: [],
-        map: {}
+        map: {},
+        data: {}
     }
 
     componentDidMount() {
@@ -117,6 +120,12 @@ export default class App extends React.Component {
 
         this.setState({map: map})
         this.generateMarkers(map, this.state.locations)
+
+        // Get infowindow content!!!!!!!!!!!!!!!!!!!!!!!!!
+        fetch('https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=WO4IYUFMH0UFRBBAUDK0C04TVCOBC4N454Z1PR3VYECSMBXN&v=20180712')
+        .then(response => response.json())
+        .then(data => this.setState({data}))
+        .catch(error => ('Unable to retieve data, network error!', error))
     }
 
     // Generate markers
@@ -169,7 +178,7 @@ export default class App extends React.Component {
                 infowindow.open(map, marker);
                 // Clear marker property if window is closed
                 infowindow.addListener("closeclick", function() {
-                    infowindow.close(); // setMarker(null) will not work here, causes a cors error
+                infowindow.close(); // setMarker(null) will not work here, causes a cors error
                 });
             }
         }
@@ -223,6 +232,7 @@ export default class App extends React.Component {
 
     render() {
         let mapClass = this.state.sidebar === "sidenav" ? "map" : "map-active"
+        console.log('Data = ', this.state.data)
         return (
             <div id="app">
                 <header>
