@@ -33,10 +33,10 @@ export default class App extends React.Component {
                 id: 'C'
             },
             {
-                title: "Mary Rose Museum",
+                title: "Portsmouth Historic Dockyard",
                 location: {
-                    lat: 50.8022114,
-                    lng: -1.1088526
+                    lat: 50.800531,
+                    lng: -1.1094659
                 },
                 id: 'D'
             },
@@ -49,10 +49,10 @@ export default class App extends React.Component {
                 id: 'E'
             },
             {
-                title: "Charles Dickens Birthplace Museum",
+                title: "Portsmouth Anglican Cathedral",
                 location: {
-                    lat: 50.8070676,
-                    lng: -1.0872127
+                    lat: 50.7904478,
+                    lng: -1.1042945
                 },
                 id: 'F'
             },
@@ -73,10 +73,10 @@ export default class App extends React.Component {
                 id: 'H'
             },
             {
-                title: "Royal Marines Museum",
+                title: "Explosion! Museum of Naval Firepower",
                 location: {
-                    lat: 50.78429,
-                    lng: -1.053795
+                    lat: 50.807553,
+                    lng: -1.126353
                 },
                 id: 'I'
             },
