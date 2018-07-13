@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 import SideNav from './SideNav'
 import ReactTestUtils from 'react-dom/test-utils'
-//import swal from 'sweetalert'
+import swal from 'sweetalert2'
 
 
 export default class App extends React.Component {
@@ -193,6 +193,8 @@ export default class App extends React.Component {
                 infowindow.close(); // setMarker(null) will not work here, causes a cors error
                 });
             }
+            // Test use of sweetalert modal
+            //swal(marker.title)
         }
     }
 
