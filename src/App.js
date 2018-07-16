@@ -132,11 +132,11 @@ export default class App extends React.Component {
         this.generateMarkers(map, this.state.locations)
 
         // Get infowindow content!!!!!!!!!!!!!!!!!!!!!!!!!
-        let url = 'https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=WO4IYUFMH0UFRBBAUDK0C04TVCOBC4N454Z1PR3VYECSMBXN&v=20180712'
+        let url = 'https://api.foursquare.com/v2/venues/4b7ac339f964a520753b2fe3?&oauth_token=WO4IYUFMH0UFRBBAUDK0C04TVCOBC4N454Z1PR3VYECSMBXN&v=20180712'
         fetch(url)
         .then(response => response.json())
         .then(data => this.setState({data}))
-        .catch(error => ('Unable to retrieve data, network error!'))
+        .catch(error => (swal('Unable to retrieve data, network error!')))
     }
 
     // Generate markers
@@ -190,10 +190,10 @@ export default class App extends React.Component {
                 infowindow.open(map, marker);
                 // Clear marker property if window is closed
                 infowindow.addListener("closeclick", function() {
-                infowindow.close(); // setMarker(null) will not work here, causes a cors error
+                infowindow.close(); // setMarker(null) will not work here, causes a CORS error
                 });
             }
-            // Test use of sweetalert modal
+            // Test use of sweetalert modal *******************************************
             //swal(marker.title)
         }
     }
