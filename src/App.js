@@ -103,8 +103,7 @@ export default class App extends React.Component {
         ],
         places: [],
         markers: [],
-        map: {},
-        data: {}
+        map: {}
     }
 
     componentDidMount() {
@@ -130,13 +129,6 @@ export default class App extends React.Component {
 
         this.setState({map: map})
         this.generateMarkers(map, this.state.locations)
-
-        // Get infowindow content!!!!!!!!!!!!!!!!!!!!!!!!!
-        let url = 'https://api.foursquare.com/v2/venues/4b7ac339f964a520753b2fe3?&oauth_token=WO4IYUFMH0UFRBBAUDK0C04TVCOBC4N454Z1PR3VYECSMBXN&v=20180712'
-        fetch(url)
-        .then(response => response.json())
-        .then(data => this.setState({data}))
-        .catch(error => (swal('Unable to retrieve data, network error!')))
     }
 
     // Generate markers
@@ -151,6 +143,7 @@ export default class App extends React.Component {
         for (let i = 0; i < locations.length; i++) {
             let position = locations[i].location;
             let title = locations[i].title;
+            let information = locations[i].info;
             // Create marker object
             let marker = new window.google.maps.Marker({
                 map: map,
@@ -158,7 +151,8 @@ export default class App extends React.Component {
                 title: title,
                 icon: 'http://maps.google.com/mapfiles/marker' + labels[i] + '.png',
                 animation: window.google.maps.Animation.DROP,
-                id: labels[i]
+                id: labels[i],
+                info: information
             });
             // Push each marker to the markers array
             markersList.push(marker);
@@ -179,13 +173,35 @@ export default class App extends React.Component {
 
         // Pass the generated marker list ready to update state
         this.setMarkersList(markersList);
+
         // This function populates the infowindow when a marker is clicked
         function populateInfoWindow(marker, infowindow) {
             // Ensure that the infowindow is not already open on this marker
             if (infowindow.marker !== marker) {
                 infowindow.marker = marker;
-                // InfoWindow content is specified here
-                infowindow.setContent("<div>" + marker.title + "</div>");
+                infowindow.setContent("<div></div>");
+
+                fetch('https://api.foursquare.com/v2/venues/' + marker.info + '?&oauth_token=WO4IYUFMH0UFRBBAUDK0C04TVCOBC4N454Z1PR3VYECSMBXN&v=20180712')
+                .then(
+                    function (response) {
+                        if (response.status !== 200) {
+                            console.log('Issue! Status code: ' + response.status)
+                            return;
+                        }
+                        // Extract response data
+                        response.json().then(function(data) {
+                            console.log('Data = ', data)
+                            console.log('Data = ', data.response.venue.name)
+                            // InfoWindow content is specified here
+                            infowindow.setContent("<div><h1>" +data.response.venue.name + "</h1></div>");
+                        })
+                    }
+                )
+                .catch(function(err) {
+                    console.log('Fetch error :-S', err)
+                });
+
+
                 //infowindow.setContent(data.response.venue.name)
                 infowindow.open(map, marker);
                 // Clear marker property if window is closed
