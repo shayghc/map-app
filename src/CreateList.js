@@ -4,8 +4,7 @@ import Location from './Location'
 class CreateList extends React.Component {
     state = {
         filter: '',
-        places: [],
-        firstPass: true
+        places: []
     }
 
     // Sets the initial state for the locations
@@ -15,9 +14,6 @@ class CreateList extends React.Component {
 
     // Updates the list in the sidenav according to input text
     updateFilter(event) {
-        // Next line resolves an issue where the list did not update after input text was cleared
-        this.setState({firstPass: false})
-        if (event.target.value) {
             // Limit text input to 25 characters
             this.setState({filter: event.target.value.substr(0, 25)})
 
@@ -36,22 +32,15 @@ class CreateList extends React.Component {
             }
 
             this.setState({places: filteredPOIs})
-            //let update = this.state.places;
             // Pass the places array to app.js to generate the markers
-            this.props.fetchFilteredPOIs(this.state.places);
-        } else {
-            // Set state.places with the locations array from app.ja to initialise
-            // If the input text is cleared the reset the sidenav list to the original list i.e. full list
-            this.setState({places: this.props.locations})
-            // Filter needs to be reset otherwise it will retain the last deleted letter
-            this.setState({filter: ''})
-        }
+            this.props.fetchFilteredPOIs(filteredPOIs);
     }
 
     render() {
         return(
             <div>
                 <input
+                    id="filter"
                     type="text"
                     value={this.state.filter}
                     placeholder="Enter text to filter the list..."

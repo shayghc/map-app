@@ -132,6 +132,9 @@ export default class App extends React.Component {
 
     // Generate markers
     generateMarkers(map, locations) {
+        // Filter the locations used to generate the markers and sidenav list
+        this.setState({places: locations})
+
         const markersList = [];
         let largeInfoWindow = new window.google.maps.InfoWindow();
         let bounds = new window.google.maps.LatLngBounds();
@@ -229,9 +232,8 @@ export default class App extends React.Component {
 
     // Fetch the filtered list from CreateList.js
     fetchFilteredPOIs(filteredPOIs) {
-        this.setState({places: filteredPOIs})
         // Pass the filtered POIs to generate new markers
-        this.generateMarkers(this.state.map, this.state.places);
+        this.generateMarkers(this.state.map, filteredPOIs);
     }
 
     // This class determines if the sidenav is visible or collapsed
@@ -248,11 +250,11 @@ export default class App extends React.Component {
 
     // Pass the sidenav item click event to the corresponding marker
     markerClick(title) {
-        console.log('clicked')
         for (let i = 0; i < this.state.markers.length; i++) {
             if (this.state.markers[i].title === title) {
                 let targetMarker = this.state.markers[i];
                 window.google.maps.event.trigger(targetMarker, 'click');
+                return;
             }
         }
     }
