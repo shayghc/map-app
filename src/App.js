@@ -193,12 +193,12 @@ export default class App extends React.Component {
                             console.log('Data = ', data)
                             console.log('Data = ', data.response.venue.name)
                             // InfoWindow content is specified here
-                            infowindow.setContent("<div><h1>" +data.response.venue.name + "</h1></div>");
+                            infowindow.setContent("<div><h3>" + data.response.venue.name + "</h3><p><em>Address:</em><br>" + data.response.venue.location.formattedAddress[0] + ",<br>" + data.response.venue.location.formattedAddress[1] + ",<br>" + data.response.venue.location.formattedAddress[2] + ",<br>" + data.response.venue.location.formattedAddress[3] + "</p></div>");
                         })
                     }
                 )
                 .catch(function(err) {
-                    console.log('Fetch error :-S', err)
+                    swal('Fetch error :-S', err)
                 });
 
 
