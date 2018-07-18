@@ -167,7 +167,7 @@ export default class App extends React.Component {
                 }, 1400);
             });
             //this.setMarkersList(markersList);
-            map.fitBounds(bounds);
+            //map.fitBounds(bounds);
         }
 
         // Pass the generated marker list ready to update state
@@ -206,8 +206,6 @@ export default class App extends React.Component {
                 infowindow.close(); // setMarker(null) will not work here, causes a CORS error
                 });
             }
-            // Test use of sweetalert modal *******************************************
-            //swal(marker.title)
         }
     }
 
@@ -251,11 +249,9 @@ export default class App extends React.Component {
     // Pass the sidenav item click event to the corresponding marker
     markerClick(title) {
         console.log('clicked')
-        //const targetMarker = this.state.markers.filter(marker => marker.title === title)
         for (let i = 0; i < this.state.markers.length; i++) {
             if (this.state.markers[i].title === title) {
                 let targetMarker = this.state.markers[i];
-                console.log('Marker = ', targetMarker);
                 window.google.maps.event.trigger(targetMarker, 'click');
             }
         }
