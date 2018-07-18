@@ -1,7 +1,6 @@
 import React from "react";
 import "./index.css";
 import SideNav from './SideNav'
-import ReactTestUtils from 'react-dom/test-utils'
 import swal from 'sweetalert2'
 
 
@@ -190,8 +189,6 @@ export default class App extends React.Component {
                         }
                         // Extract response data
                         response.json().then(function(data) {
-                            console.log('Data = ', data)
-                            console.log('Data = ', data.response.venue.name)
                             // InfoWindow content is specified here
                             infowindow.setContent("<div><h3>" + data.response.venue.name + "</h3><p><em>Address:</em><br>" + data.response.venue.location.formattedAddress[0] + ",<br>" + data.response.venue.location.formattedAddress[1] + ",<br>" + data.response.venue.location.formattedAddress[2] + ",<br>" + data.response.venue.location.formattedAddress[3] + "</p></div>");
                         })
@@ -253,11 +250,15 @@ export default class App extends React.Component {
 
     // Pass the sidenav item click event to the corresponding marker
     markerClick(title) {
-        const targetMarker = this.state.markers.filter(marker => marker.title === title)
-        console.log(targetMarker)
-        // Neither click simulation method works here ---- WHY NOT?
-        ReactTestUtils.Simulate.click(targetMarker)
-        //targetMarker.dispatchEvent(new Event('click'))
+        console.log('clicked')
+        //const targetMarker = this.state.markers.filter(marker => marker.title === title)
+        for (let i = 0; i < this.state.markers.length; i++) {
+            if (this.state.markers[i].title === title) {
+                let targetMarker = this.state.markers[i];
+                console.log('Marker = ', targetMarker);
+                window.google.maps.event.trigger(targetMarker, 'click');
+            }
+        }
     }
 
     render() {
