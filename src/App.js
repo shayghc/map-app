@@ -116,7 +116,7 @@ export default class App extends React.Component {
             mapTypeId: "roadmap"
         });
 
-        // Return map to center if the map is moved off centre
+        /*/ Return map to center if the map is moved off centre
         map.addListener("center_changed", function() {
             window.setTimeout(function() {
                 map.panTo({
@@ -124,7 +124,7 @@ export default class App extends React.Component {
                     lng: -1.1098803
                 });
             }, 1000);
-        });
+        });*/
 
         this.setState({map: map})
         this.generateMarkers(map, this.state.locations)
@@ -162,7 +162,8 @@ export default class App extends React.Component {
             bounds.extend(marker.position);
             // Create an onclick event for the infowindows
             marker.addListener("click", function() {
-                populateInfoWindow(this, largeInfoWindow);
+                map.panTo(position)
+                populateInfoWindow(this, largeInfoWindow, map);
                 // Add double bounce when clicked
                 this.setAnimation(window.google.maps.Animation.BOUNCE);
                 setTimeout(function() {
@@ -177,7 +178,7 @@ export default class App extends React.Component {
         this.setMarkersList(markersList);
 
         // This function populates the infowindow when a marker is clicked
-        function populateInfoWindow(marker, infowindow) {
+        function populateInfoWindow(marker, infowindow, map) {
             // Ensure that the infowindow is not already open on this marker
             if (infowindow.marker !== marker) {
                 infowindow.marker = marker;
@@ -206,7 +207,8 @@ export default class App extends React.Component {
                 infowindow.open(map, marker);
                 // Clear marker property if window is closed
                 infowindow.addListener("closeclick", function() {
-                infowindow.close(); // setMarker(null) will not work here, causes a CORS error
+                    infowindow.close(); // setMarker(null) will not work here, causes a CORS error
+                    map.panTo({lat: 50.7934612, lng: -1.1098803})
                 });
             }
         }
