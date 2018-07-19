@@ -6,11 +6,11 @@ Built on top of the [starter template](https://github.com/udacity/reactnd-projec
 
 ## Quickstart :point_left:
 
+Follow these steps to open the app in your default browser.
+
 1. Clone the repo
 2. cd into the project root and run `npm install`
 3. run `npm start` to activate the server.
-
-Follow these steps to open the app in your default browser.
 
 ## create-react-app
 
