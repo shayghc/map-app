@@ -112,7 +112,17 @@ export default class App extends React.Component {
                 lng: -1.1098803
             },
             zoom: 14,
-            mapTypeId: "roadmap"
+            mapTypeId: "roadmap",
+            streetViewControlOptions: {
+                position: window.google.maps.ControlPosition.RIGHT_CENTER
+            },
+            zoomControlOptions: {
+                position: window.google.maps.ControlPosition.RIGHT_CENTER
+            },
+            mapTypeControlOptions: {
+                position: window.google.maps.ControlPosition.TOP_CENTER
+            },
+            fullscreenControl: false
         });
 
         /* Return map to center if the map is moved off centre
