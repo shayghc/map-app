@@ -3,7 +3,6 @@ import "./index.css";
 import SideNav from './SideNav'
 import swal from 'sweetalert2'
 
-
 export default class App extends React.Component {
     state = {
         sidebar: "sidenav-active",
@@ -116,7 +115,8 @@ export default class App extends React.Component {
             mapTypeId: "roadmap"
         });
 
-        /*/ Return map to center if the map is moved off centre
+        /* Return map to center if the map is moved off centre
+        // This functionality was moved to the infowindow close event
         map.addListener("center_changed", function() {
             window.setTimeout(function() {
                 map.panTo({
@@ -188,7 +188,7 @@ export default class App extends React.Component {
                 .then(
                     function (response) {
                         if (response.status !== 200) {
-                            console.log('Issue! Status code: ' + response.status)
+                            infowindow.setContent("<div>Unable to get FourSquare info for " + marker.title + " at this time.\nPLease refresh your browser.</div>")
                             return;
                         }
                         // Extract response data
@@ -199,7 +199,13 @@ export default class App extends React.Component {
                     }
                 )
                 .catch(function(err) {
-                    swal('Fetch error :-S', err)
+                    swal({
+                        title: 'Connection error',
+                        text: 'Unable to connect with the FourSquare server.',
+                        footer: 'Please check your internet connection.'
+                    })
+                    infowindow.close();
+                    map.panTo({lat: 50.7934612, lng: -1.1098803})
                 });
 
 
