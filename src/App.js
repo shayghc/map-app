@@ -208,8 +208,6 @@ export default class App extends React.Component {
                     map.panTo({lat: 50.7934612, lng: -1.1098803})
                 });
 
-
-                //infowindow.setContent(data.response.venue.name)
                 infowindow.open(map, marker);
                 // Clear marker property if window is closed
                 infowindow.addListener("closeclick", function() {
