@@ -180,8 +180,8 @@ export default class App extends React.Component {
                     marker.setAnimation(null);
                 }, 1400);
             });
-            //this.setMarkersList(markersList);
-            //map.fitBounds(bounds);
+            this.setMarkersList(markersList);
+            map.fitBounds(bounds);
         }
 
         // Pass the generated marker list ready to update state
