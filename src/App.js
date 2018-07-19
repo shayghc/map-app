@@ -143,9 +143,14 @@ export default class App extends React.Component {
     }
 
     // Update presence of sidebarVisibility
-    updateSidebarState() {
-        if (window.innerWidth < 760) {
+    updateSidebarState(click) {
+        // Start with the sidebar hidden on small screens
+        if (window.innerWidth < 470) {
             this.setState({sidebar: 'sidenav'})
+            // Hide sidebar to display infowindow on small screens
+            if (click === true) {
+                this.setState({sidebar: 'sidenav'})
+            }
         } else {
             this.setState({sidebar: 'sidenav-active'})
         }
@@ -233,6 +238,7 @@ export default class App extends React.Component {
                 // Clear marker property if window is closed
                 infowindow.addListener("closeclick", function() {
                     infowindow.close(); // setMarker(null) will not work here, causes a CORS error
+                    // Centre the map when the infowindow is closed
                     map.panTo({lat: 50.7934612, lng: -1.1098803})
                 });
             }
@@ -281,6 +287,8 @@ export default class App extends React.Component {
             if (this.state.markers[i].title === title) {
                 let targetMarker = this.state.markers[i];
                 window.google.maps.event.trigger(targetMarker, 'click');
+                let click = true;
+                this.updateSidebarState(click)
                 return;
             }
         }
