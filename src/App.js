@@ -138,6 +138,17 @@ export default class App extends React.Component {
 
         this.setState({map: map})
         this.generateMarkers(map, this.state.locations)
+
+        window.addEventListener('resize', this.updateSidebarState())
+    }
+
+    // Update presence of sidebarVisibility
+    updateSidebarState() {
+        if (window.innerWidth < 760) {
+            this.setState({sidebar: 'sidenav'})
+        } else {
+            this.setState({sidebar: 'sidenav-active'})
+        }
     }
 
     // Generate markers
