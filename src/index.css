@@ -1,5 +1,6 @@
 /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+ * element that contains the map.
+ */
 #root,
 #app,
 #map {
@@ -27,10 +28,6 @@ header {
     top: 0px;
     width: 100%;
     z-index: 1;
-}
-
-header h1 {
-    margin-left: 40%;
 }
 
 .map-active {
@@ -143,4 +140,46 @@ li:hover {
 
 .closebtn:hover {
     background-color: #000;
+}
+
+@media screen and (min-width: 300px) and (max-width: 400px) {
+    header h1 {
+        margin-left: 15%;
+        font-size: 1.4rem;
+    }
+
+    header span {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 600px) {
+    header h1 {
+        margin-left: 25%;
+        font-size: 1.6rem;
+    }
+
+    header span {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 800px) {
+    header h1 {
+        margin-left: 35%;
+        font-size: 1.8rem;
+    }
+
+    header span {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 801px) {
+    header span {
+        margin-right: 20px;
+    }
+    header h1 {
+        margin-left: 40%;
+    }
 }
