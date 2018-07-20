@@ -125,8 +125,7 @@ export default class App extends React.Component {
             fullscreenControl: false
         });
 
-        // Return map to center if the map is moved off centre
-        // This functionality was moved to the infowindow close event
+        /*/ Return map to center if the map is moved off centre
         map.addListener("center_changed", function() {
             window.setTimeout(function() {
                 map.panTo({
@@ -134,7 +133,7 @@ export default class App extends React.Component {
                     lng: -1.1098803
                 });
             }, 1000);
-        });
+        });  */
 
         this.setState({map: map})
         this.generateMarkers(map, this.state.locations)
