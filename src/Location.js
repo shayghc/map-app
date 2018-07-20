@@ -10,7 +10,7 @@ class Location extends React.Component {
     render() {
         const { location } = this.props;
         return(
-            <li key={location.title} onClick={this.handleClick}>
+            <li tabindex="0" key={location.title} onClick={this.handleClick}>
                 {location.id}.&nbsp;&nbsp;{location.title}
             </li>
         )

@@ -51,6 +51,7 @@ class CreateList extends React.Component {
                     value={this.state.filter}
                     placeholder="Enter text to filter the list..."
                     onChange={this.updateFilter.bind(this)}
+                    tabindex="0"
                 />
                 <ul id="navUL" className={{visibility}} style={linkStyle}>
                 {this.state.places.map((location) => {

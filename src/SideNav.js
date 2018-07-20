@@ -7,7 +7,7 @@ class SideNav extends React.Component {
 
         return (
             <nav className={className}>
-                <span><button className="closebtn" onClick={this.props.close}>&times;</button></span>
+                <span><button aria-label="Close" className="closebtn" onClick={this.props.close}>&times;</button></span>
                     <CreateList
                         locations={this.props.locations}
                         fetchFilteredPOIs={this.props.fetchFilteredPOIs}

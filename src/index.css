@@ -45,6 +45,7 @@ h1 {
 
 .hamburger {
     margin-left: 20px;
+    cursor: pointer;
 }
 
 button {
@@ -69,6 +70,10 @@ form {
 
 input {
     margin: 0 10px 15px 20px;
+}
+
+input:focus {
+    border: solid 1px #ccf;
 }
 
 label {

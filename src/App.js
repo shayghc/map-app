@@ -299,7 +299,7 @@ export default class App extends React.Component {
         return (
             <div id="app">
                 <header>
-                    <span className="hamburger" onClick={this.sidebarVisibility.bind(this)}>
+                    <span aria-label="Menu" className="hamburger" onClick={this.sidebarVisibility.bind(this)}>
                         &#9776;
                     </span>
                     <h1>Portsmouth POIs</h1>
