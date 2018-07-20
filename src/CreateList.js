@@ -39,9 +39,11 @@ class CreateList extends React.Component {
     render() {
         return(
             <div>
+                <label for="filter">Filter the POIs</label>
                 <input
                     id="filter"
                     type="text"
+                    name="filter"
                     value={this.state.filter}
                     placeholder="Enter text to filter the list..."
                     onChange={this.updateFilter.bind(this)}

@@ -66,6 +66,7 @@ input {
 label {
     display: block;
     padding: 0 15px 15px 5px;
+    margin-left: 6px;
 }
 
 .intro {
