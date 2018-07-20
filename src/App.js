@@ -125,7 +125,7 @@ export default class App extends React.Component {
             fullscreenControl: false
         });
 
-        /* Return map to center if the map is moved off centre
+        // Return map to center if the map is moved off centre
         // This functionality was moved to the infowindow close event
         map.addListener("center_changed", function() {
             window.setTimeout(function() {
@@ -134,7 +134,7 @@ export default class App extends React.Component {
                     lng: -1.1098803
                 });
             }, 1000);
-        });*/
+        });
 
         this.setState({map: map})
         this.generateMarkers(map, this.state.locations)
@@ -299,7 +299,7 @@ export default class App extends React.Component {
         return (
             <div id="app">
                 <header>
-                    <span onClick={this.sidebarVisibility.bind(this)}>
+                    <span className="hamburger" onClick={this.sidebarVisibility.bind(this)}>
                         &#9776;
                     </span>
                     <h1>Portsmouth POIs</h1>
