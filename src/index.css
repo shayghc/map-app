@@ -1,14 +1,28 @@
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map.
  */
+
+ .biggy {
+     height: 100px;
+     widows: 220px;
+     background-color: #00f;
+ }
 #root,
 #app,
-#map {
+#map,
+#noMap {
     height: 100%;
 }
 
 .map {
     margin-top: 70px;
+}
+
+#noMap {
+    text-align: center;
+    line-height: 200px;
+    font-size: 3rem;
+    opacity: 0;
 }
 
 html,
@@ -43,15 +57,24 @@ h1 {
     font-size: 1.8em;
 }
 
-span {
-    margin-right: 50px;
+.hamburger {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+button {
+    display: inline;
+    line-height: 65px;
+    font-size: 1.8em;
     margin-left: 20px;
     font-size: 30px;
     cursor: pointer;
     color: white;
+    background-color: #000;
+    border: none;
 }
 
-span:hover {
+button:hover {
     cursor: pointer;
 }
 
@@ -60,12 +83,18 @@ form {
 }
 
 input {
-    margin: 0 10px 15px;
+    margin: 0 10px 15px 20px;
+}
+
+input:focus {
+    border: solid 1px #ccf;
 }
 
 label {
     display: block;
     padding: 0 15px 15px 5px;
+    margin: 80px 0 0 15px;
+    font-size: 1.2rem;
 }
 
 .intro {
