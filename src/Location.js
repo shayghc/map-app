@@ -17,9 +17,11 @@ class Location extends React.Component {
     }
 
     render() {
+        let status = this.props.className === 'sidenav' ? true : false
+        let tabIndex = status === true ? -1 : 0
         const { location } = this.props;
         return(
-            <li tabIndex="0" key={location.title} onClick={this.handleClick} onKeyUp={this.handleEnter}>
+            <li aria-hidden={status} tabIndex={tabIndex} key={location.title} onClick={this.handleClick} onKeyUp={this.handleEnter}>
                 <a>{location.id}.&nbsp;&nbsp;{location.title}</a>
             </li>
         )

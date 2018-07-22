@@ -142,6 +142,10 @@ export default class App extends React.Component {
         window.addEventListener('resize', this.updateSidebarState())
     }
 
+    componentDidUpdate() {
+        console.log('Changes in progress')
+    }
+
     // Update presence of sidebarVisibility
     updateSidebarState(click) {
         // Start with the sidebar hidden on small screens

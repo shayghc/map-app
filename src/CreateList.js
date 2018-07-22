@@ -61,6 +61,7 @@ class CreateList extends React.Component {
                         key={location.title}
                         title={location.title}
                         markerClick={this.props.markerClick}
+                        className={this.props.className}
                     />
                 })}
                 </ul>
