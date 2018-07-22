@@ -180,7 +180,7 @@ export default class App extends React.Component {
                 animation: window.google.maps.Animation.DROP,
                 id: labels[i],
                 info: information,
-                infowindow: false
+                infowindow: false // Used to detect if there is an infowindow open
             });
             // Push each marker to the markers array
             markersList.push(marker);
