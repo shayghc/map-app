@@ -138,6 +138,7 @@ export default class App extends React.Component {
         this.setState({map: map})
         this.generateMarkers(map, this.state.locations)
 
+        // If the window is resized, check dimensions to determine if the sidebar should be open or closed
         window.addEventListener('resize', this.updateSidebarState())
     }
 
