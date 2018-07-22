@@ -1,14 +1,28 @@
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map.
  */
+
+ .biggy {
+     height: 100px;
+     widows: 220px;
+     background-color: #00f;
+ }
 #root,
 #app,
-#map {
+#map,
+#noMap {
     height: 100%;
 }
 
 .map {
     margin-top: 70px;
+}
+
+#noMap {
+    text-align: center;
+    line-height: 200px;
+    font-size: 3rem;
+    opacity: 0;
 }
 
 html,
