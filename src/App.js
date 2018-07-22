@@ -246,6 +246,7 @@ export default class App extends React.Component {
             } else {
                 marker.infowindow = false
                 infowindow.close(); // Closes the infowindow with a second event of a sidebar item
+                map.panTo({lat: 50.7934612, lng: -1.1098803})
             }
         }
     }
