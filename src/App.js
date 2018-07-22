@@ -179,7 +179,8 @@ export default class App extends React.Component {
                 icon: 'http://maps.google.com/mapfiles/marker' + labels[i] + '.png',
                 animation: window.google.maps.Animation.DROP,
                 id: labels[i],
-                info: information
+                info: information,
+                infowindow: false
             });
             // Push each marker to the markers array
             markersList.push(marker);
@@ -227,19 +228,24 @@ export default class App extends React.Component {
                     swal({
                         title: 'Connection error',
                         text: 'Unable to connect with the FourSquare server.',
-                        footer: 'Please check your internet connection.'
+                        footer: 'Please check your internet connection and refresh.'
                     })
                     infowindow.close();
                     map.panTo({lat: 50.7934612, lng: -1.1098803})
                 });
 
                 infowindow.open(map, marker);
+                marker.infowindow = true
                 // Clear marker property if window is closed
                 infowindow.addListener("closeclick", function() {
+                    marker.infowindow = false
                     infowindow.close(); // setMarker(null) will not work here, causes a CORS error
                     // Centre the map when the infowindow is closed
                     map.panTo({lat: 50.7934612, lng: -1.1098803})
                 });
+            } else {
+                marker.infowindow = false
+                infowindow.close(); // Closes the infowindow with a second event of a sidebar item
             }
         }
     }
@@ -286,6 +292,7 @@ export default class App extends React.Component {
             if (this.state.markers[i].title === title) {
                 let targetMarker = this.state.markers[i];
                 window.google.maps.event.trigger(targetMarker, 'click');
+                // The click variable and function call below will hide the sidebar on small screens when an infowindow is open
                 let click = true;
                 this.updateSidebarState(click)
                 return;
@@ -310,7 +317,10 @@ export default class App extends React.Component {
                     fetchFilteredPOIs={this.fetchFilteredPOIs.bind(this)}
                     markerClick={this.markerClick.bind(this)}
                 />
-                <div id="map" className={mapClass}/>
+                {(!window.google || !window.google.maps) ?
+                    (<div id="noMap">Loading map...</div>) :
+                    (<div id="map" className={mapClass}/>)
+                }
             </div>
         );
     }
