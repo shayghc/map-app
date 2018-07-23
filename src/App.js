@@ -250,7 +250,7 @@ export default class App extends React.Component {
         }
     }
 
-    // Remove redundant markers form the map before generating new markers
+    // Remove redundant markers from the map before generating new markers
     deleteMarkers() {
         let markers = this.state.markers
         // Clear map on each marker
@@ -301,6 +301,7 @@ export default class App extends React.Component {
     }
 
     render() {
+        // Match map state with sidebar state
         let mapClass = this.state.sidebar === "sidenav" ? "map" : "map-active"
         return (
             <div id="app">
