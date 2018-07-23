@@ -1,3 +1,5 @@
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 # Neighbourhood Maps
 
 This repo contains the code for the Neighbourhood Maps, Google API project for the React portion of the Udacity FEND course. The app displays several navy related places of interest in Portsmouth, UK. The city has a long history associated with the Royal Navy.
