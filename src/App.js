@@ -142,10 +142,6 @@ export default class App extends React.Component {
         window.addEventListener('resize', this.updateSidebarState())
     }
 
-    componentDidUpdate() {
-        console.log('Changes in progress')
-    }
-
     // Update presence of sidebarVisibility
     updateSidebarState(click) {
         // Start with the sidebar hidden on small screens
@@ -201,12 +197,10 @@ export default class App extends React.Component {
                     marker.setAnimation(null);
                 }, 1400);
             });
+            // Pass the generated marker list ready to update state
             this.setMarkersList(markersList);
             map.fitBounds(bounds);
         }
-
-        // Pass the generated marker list ready to update state
-        this.setMarkersList(markersList);
 
         // This function populates the infowindow when a marker is clicked
         function populateInfoWindow(marker, infowindow, map) {
@@ -225,7 +219,7 @@ export default class App extends React.Component {
                         // Extract response data
                         response.json().then(function(data) {
                             // InfoWindow content is specified here
-                            infowindow.setContent("<div><h3>" + data.response.venue.name + "</h3><p><em>Address:</em><br>" + data.response.venue.location.formattedAddress[0] + ",<br>" + data.response.venue.location.formattedAddress[1] + ",<br>" + data.response.venue.location.formattedAddress[2] + ",<br>" + data.response.venue.location.formattedAddress[3] + "</p></div>");
+                            infowindow.setContent("<div tabindex='0'><h3>" + data.response.venue.name + "</h3><p><em>Address:</em><br>" + data.response.venue.location.formattedAddress[0] + ",<br>" + data.response.venue.location.formattedAddress[1] + ",<br>" + data.response.venue.location.formattedAddress[2] + ",<br>" + data.response.venue.location.formattedAddress[3] + "</p></div>");
                         })
                     }
                 )
@@ -256,7 +250,7 @@ export default class App extends React.Component {
         }
     }
 
-    // Remove redundant markers form the map before generating new markers
+    // Remove redundant markers from the map before generating new markers
     deleteMarkers() {
         let markers = this.state.markers
         // Clear map on each marker
@@ -307,6 +301,7 @@ export default class App extends React.Component {
     }
 
     render() {
+        // Match map state with sidebar state
         let mapClass = this.state.sidebar === "sidenav" ? "map" : "map-active"
         return (
             <div id="app">
