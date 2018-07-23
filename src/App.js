@@ -201,12 +201,10 @@ export default class App extends React.Component {
                     marker.setAnimation(null);
                 }, 1400);
             });
+            // Pass the generated marker list ready to update state
             this.setMarkersList(markersList);
             map.fitBounds(bounds);
         }
-
-        // Pass the generated marker list ready to update state
-        this.setMarkersList(markersList);
 
         // This function populates the infowindow when a marker is clicked
         function populateInfoWindow(marker, infowindow, map) {
