@@ -12,11 +12,17 @@ When the sidebar is hidden it can be revealed by clicking/pressing 'enter' on th
 
 ## Quickstart
 
-Follow these steps to open the app in your default browser.
+Follow these steps to open the app locally in your default browser.
 
 1. Clone the repo
 2. cd into the project root and run `npm install`
-3. run `npm start` to activate the server.
+3. Run `npm start` to activate a local server on port 3000 (localhost:3000).
+
+To run an offline-first version of the app perform the additional steps:
+
+4. Navigate to the build directory
+5. Run `npm serve` to install the server
+6. Run `serve -s build` launch the app. This can be accessed at localport:5000 in your browser
 
 ## create-react-app
 
