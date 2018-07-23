@@ -142,10 +142,6 @@ export default class App extends React.Component {
         window.addEventListener('resize', this.updateSidebarState())
     }
 
-    componentDidUpdate() {
-        console.log('Changes in progress')
-    }
-
     // Update presence of sidebarVisibility
     updateSidebarState(click) {
         // Start with the sidebar hidden on small screens
@@ -223,7 +219,7 @@ export default class App extends React.Component {
                         // Extract response data
                         response.json().then(function(data) {
                             // InfoWindow content is specified here
-                            infowindow.setContent("<div><h3>" + data.response.venue.name + "</h3><p><em>Address:</em><br>" + data.response.venue.location.formattedAddress[0] + ",<br>" + data.response.venue.location.formattedAddress[1] + ",<br>" + data.response.venue.location.formattedAddress[2] + ",<br>" + data.response.venue.location.formattedAddress[3] + "</p></div>");
+                            infowindow.setContent("<div tabindex='0'><h3>" + data.response.venue.name + "</h3><p><em>Address:</em><br>" + data.response.venue.location.formattedAddress[0] + ",<br>" + data.response.venue.location.formattedAddress[1] + ",<br>" + data.response.venue.location.formattedAddress[2] + ",<br>" + data.response.venue.location.formattedAddress[3] + "</p></div>");
                         })
                     }
                 )
