@@ -101,45 +101,57 @@ export default class App extends React.Component {
         ],
         places: [],
         markers: [],
-        map: {}
+        map: {},
+        error: false
     }
 
     componentDidMount() {
-        // Invoke map instance with initialisation data
-        let map = new window.google.maps.Map(document.getElementById("map"), {
-            center: {
-                lat: 50.7934612,
-                lng: -1.1098803
-            },
-            zoom: 14,
-            mapTypeId: "roadmap",
-            streetViewControlOptions: {
-                position: window.google.maps.ControlPosition.RIGHT_CENTER
-            },
-            zoomControlOptions: {
-                position: window.google.maps.ControlPosition.RIGHT_CENTER
-            },
-            mapTypeControlOptions: {
-                position: window.google.maps.ControlPosition.TOP_CENTER
-            },
-            fullscreenControl: false
-        });
-
-        /*/ Return map to center if the map is moved off centre
-        map.addListener("center_changed", function() {
-            window.setTimeout(function() {
-                map.panTo({
+        // Check for successful Google Maps API response, provide fallback if !response.ok
+        if (!window.google || !window.google.maps) {
+            this.setState({error: true});
+            swal({
+                title: 'Google Maps API Error',
+                text: 'Unable to connect with Google Maps. Please check your internet connectivity.',
+                background: '#ffc'
+            })
+        } else {
+            // Invoke map instance with initialisation data if API response.ok
+            let map = new window.google.maps.Map(document.getElementById("map"), {
+                center: {
                     lat: 50.7934612,
                     lng: -1.1098803
-                });
-            }, 1000);
-        });  */
+                },
+                zoom: 14,
+                mapTypeId: "roadmap",
+                streetViewControlOptions: {
+                    position: window.google.maps.ControlPosition.RIGHT_CENTER
+                },
+                zoomControlOptions: {
+                    position: window.google.maps.ControlPosition.RIGHT_CENTER
+                },
+                mapTypeControlOptions: {
+                    position: window.google.maps.ControlPosition.TOP_CENTER
+                },
+                fullscreenControl: false
+            });
 
-        this.setState({map: map})
-        this.generateMarkers(map, this.state.locations)
+            /*/ Return map to center if the map is moved off centre
+            map.addListener("center_changed", function() {
+                window.setTimeout(function() {
+                    map.panTo({
+                        lat: 50.7934612,
+                        lng: -1.1098803
+                    });
+                }, 1000);
+            });  */
 
-        // If the window is resized, check dimensions to determine if the sidebar should be open or closed
-        window.addEventListener('resize', this.updateSidebarState())
+            this.setState({map: map})
+            this.generateMarkers(map, this.state.locations)
+
+            // If the window is resized, check dimensions to determine if the sidebar should be open or closed
+            window.addEventListener('resize', this.updateSidebarState())
+        }
+
     }
 
     // Update presence of sidebarVisibility
@@ -318,10 +330,7 @@ export default class App extends React.Component {
                     fetchFilteredPOIs={this.fetchFilteredPOIs.bind(this)}
                     markerClick={this.markerClick.bind(this)}
                 />
-                {(!window.google || !window.google.maps) ?
-                    (<div id="noMap">Loading map...</div>) :
-                    (<div id="map" className={mapClass}/>)
-                }
+                <div id="map" className={mapClass}/>
             </div>
         );
     }
