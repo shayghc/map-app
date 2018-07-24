@@ -9,20 +9,13 @@
  }
 #root,
 #app,
-#map,
-#noMap {
+#map {
     height: 100%;
 }
 
-.map {
+#map {
     margin-top: 70px;
-}
-
-#noMap {
-    text-align: center;
-    line-height: 200px;
-    font-size: 3rem;
-    opacity: 0;
+    background-color: #999;
 }
 
 html,
