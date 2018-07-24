@@ -48,8 +48,8 @@ Always happy to collaborate. If you have any questions or even comments to offer
 Thank you to the team that created [SweetAlert2](https://sweetalert2.github.io/#examples) to enable getting away from the default browser alert modals.
 
 API References:
-   [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial)
-   [FourSquare API](https://developer.foursquare.com/)
+*[Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial)
+*[FourSquare API](https://developer.foursquare.com/)
 
 ## License
 This code is distributed under the [MIT license](https://opensource.org/licenses/MIT).
