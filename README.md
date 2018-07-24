@@ -11,14 +11,17 @@ This repo contains the code for the Neighbourhood Maps, Google API project for t
 Follow these steps to open the app in your default browser.
 
 1. Clone the repo
-2. cd into the project root and run `npm install`
-3. Run `npm start` to activate a local server on port 3000 (localhost:3000).
+2. cd into the build directory and run `npm install`
+3. Run `npm run build`
+4. Run `npm install -g serve`
+5. Run `serve -s build`
+6. Open a new browser tab and enter 'localhost:5000' in the address bar then press enter.
 
-To run an offline-first version of the app perform the additional steps:
+## API Connection errors
 
-4. Navigate to the build directory
-5. Run `npm serve` to install the server
-6. Run `serve -s build` launch the app. This can be accessed at localport:5000 in your browser
+If the fetch API call to the Google Maps API does not return a response of 200 then a modal will pop up to advise checking the internet connection. This can be tested by deleting characters from the API call in index.html (just remember to put them back afterwards!).
+
+The information for the infowindows is retrieved by an API call to the FourSquare API. A modal will pop up to inform of any issue regarding connection to the FourSquare API, again advising to check the internet connectivity.
 
 ## create-react-app
 
@@ -43,6 +46,10 @@ Always happy to collaborate. If you have any questions or even comments to offer
 ## Credits
 
 Thank you to the team that created [SweetAlert2](https://sweetalert2.github.io/#examples) to enable getting away from the default browser alert modals.
+
+API References:
+[Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial)
+[FourSquare API](https://developer.foursquare.com/)
 
 ## License
 This code is distributed under the [MIT license](https://opensource.org/licenses/MIT).
